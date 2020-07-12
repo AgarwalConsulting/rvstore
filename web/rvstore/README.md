@@ -1,4 +1,6 @@
-# Ui
+# UI
+
+> Original code: https://github.com/VergeOps/k8s-rvstore/tree/master/Microservices/ui
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
