@@ -1,5 +1,4 @@
 FROM alpine:latest
-MAINTAINER Tim Solley
 USER root
 
 RUN apk update
