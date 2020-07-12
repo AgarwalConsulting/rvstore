@@ -61,3 +61,19 @@ Optimize for maintainability above all else!
 - **Transport layer** (Outer)
 
 > Transport logic like: rate limiting, load balancing, distributed tracing -- all of which are agnostic to business domain
+
+## Generators
+
+Go-kit has several generators, to generate several stubs to use while building your application.
+
+### [Truss](https://github.com/metaverse/truss)
+
+This uses `.proto` files to generate code.
+
+### [Microgen](https://github.com/devimteam/microgen)
+
+This uses magic comments, and an "annotation" like: `@microgen`, to generate code. Annotations aren't supported in Go.
+
+### [kit](https://github.com/kujtimiihoxha/kit)
+
+This is unmaintained. Fork [GrantZheng/kit](https://github.com/GrantZheng/kit#prerequisites) looks to be the most recently updated, but has a unusual setup guidelines.
