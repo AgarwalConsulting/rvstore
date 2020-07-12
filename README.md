@@ -15,6 +15,16 @@ This is the stock Mongo database. Find it on Docker Hub and follow the instructi
 * Container port: 27017
 * Container name: rvstore-orders-mongodb
 
+#### API Gateway Service
+
+This is a Java Spring Boot application that runs on Java 8. It is a runnable jar file, which contains its own application server.
+
+* Container port: 9000
+* Container name: rvstore-api-gateway
+* Application code located in web/gateway-service/target/gateway-service.jar
+* Command to start the process: java -jar gateway-service.jar
+* Environment variable needed: SPRING_PROFILES_ACTIVE = compose
+
 #### UI
 
 This is a static web site made up of images, HTML files, CSS, and Javascript. Pick a web server and serve up the static files located in the Github repo. I suggest Nginx.
