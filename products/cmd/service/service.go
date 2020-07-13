@@ -125,7 +125,7 @@ func getEndpointMiddleware(logger log.Logger) (mw map[string][]endpoint1.Middlew
 	duration := prometheus.NewSummaryFrom(prometheus1.SummaryOpts{
 		Help:      "Request duration in seconds.",
 		Name:      "request_duration_seconds",
-		Namespace: "example",
+		Namespace: "rvstore",
 		Subsystem: "products",
 	}, []string{"method", "success"})
 	addDefaultEndpointMiddleware(logger, duration, mw)

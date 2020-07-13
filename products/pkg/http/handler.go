@@ -20,7 +20,6 @@ func makeIndexHandler(m *http.ServeMux, endpoints endpoint.Endpoints, options []
 // JSON-encoded request from the HTTP request body.
 func decodeIndexRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	req := endpoint.IndexRequest{}
-	// err := json.NewDecoder(r.Body).Decode(&req)
 	return req, nil
 }
 
@@ -67,8 +66,7 @@ func makeIndexSecureHandler(m *http.ServeMux, endpoints endpoint.Endpoints, opti
 // JSON-encoded request from the HTTP request body.
 func decodeIndexSecureRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	req := endpoint.IndexSecureRequest{}
-	err := json.NewDecoder(r.Body).Decode(&req)
-	return req, err
+	return req, nil
 }
 
 // encodeIndexSecureResponse is a transport/http.EncodeResponseFunc that encodes
@@ -79,6 +77,7 @@ func encodeIndexSecureResponse(ctx context.Context, w http.ResponseWriter, respo
 		return nil
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	err = json.NewEncoder(w).Encode(response)
+	res, _ := response.(endpoint.IndexSecureResponse)
+	err = json.NewEncoder(w).Encode(res.Products)
 	return
 }
