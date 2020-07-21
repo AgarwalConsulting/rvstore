@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"os"
 
@@ -30,13 +31,19 @@ func init() {
 }
 
 func main() {
-	ctx, _ := context.WithCancel(context.Background())
+	ctx, cancelFn := context.WithCancel(context.Background())
+	defer cancelFn()
 
-	orderRepo := repository.New(mongoURL)
+	orderRepo, err := repository.New(ctx, mongoURL)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	orderSvc := service.New(orderRepo)
 	orderEndpoints := endpoints.MakeEndpoints(orderSvc)
 
 	r := transport.NewHTTPServer(ctx, orderEndpoints)
 
-	http.ListenAndServe(httpAddr, r)
+	log.Fatal(http.ListenAndServe(httpAddr, r))
 }

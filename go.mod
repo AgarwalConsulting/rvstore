@@ -11,5 +11,8 @@ require (
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.4.5
 	github.com/openzipkin/zipkin-go v0.2.2
 	github.com/prometheus/client_golang v1.7.1
+	github.com/sirupsen/logrus v1.4.2
+	github.com/stretchr/testify v1.4.0
+	go.mongodb.org/mongo-driver v1.3.5
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20190731080439-ebfcffb1b5c0
 )
