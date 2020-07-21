@@ -13,7 +13,6 @@ services:
     volumes:
       - dbdata:/data/db
 
-
   rvstore-order-api:
     build:
       context: .
