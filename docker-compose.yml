@@ -1,6 +1,8 @@
 version: "3.7"
+
 services:
-  orders:
+
+  rvstore-order-api:
     build:
       context: .
       args:
@@ -23,7 +25,7 @@ services:
     volumes:
       - dbdata:/data/db
 
-  products:
+  rvstore-product-api:
     build:
       context: .
       args:
@@ -33,7 +35,7 @@ services:
     ports:
     - 9001:9001
 
-  auth:
+  rvstore-auth-api:
     build:
       context: .
       args:
@@ -42,6 +44,25 @@ services:
     container_name: auth
     ports:
     - 9003:9003
+
+  rvstore-api-gateway:
+    image: "agarwalconsulting/rvstore-api-gateway:v1"
+    restart: always
+    ports:
+     - "9000:9000"
+    environment:
+     - SPRING_PROFILES_ACTIVE=compose
+
+  ui:
+    image: "agarwalconsulting/rvstore-ui:v1"
+    restart: always
+    ports:
+     - "10000:80"
+
+  rvstore-order-simulator:
+    image: "agarwalconsulting/rvstore-order-simulator:v1"
+    environment:
+     - SPRING_PROFILES_ACTIVE=compose
 
 volumes:
   dbdata:

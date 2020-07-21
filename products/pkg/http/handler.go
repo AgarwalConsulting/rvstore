@@ -13,7 +13,9 @@ import (
 
 // makeIndexHandler creates the handler logic
 func makeIndexHandler(m *http.ServeMux, endpoints endpoint.Endpoints, options []http1.ServerOption) {
-	m.Handle("/products", http1.NewServer(endpoints.IndexEndpoint, decodeIndexRequest, encodeIndexResponse, options...))
+	productsIndexHandler := http1.NewServer(endpoints.IndexEndpoint, decodeIndexRequest, encodeIndexResponse, options...)
+	m.Handle("/products", productsIndexHandler)
+	m.Handle("/products/", productsIndexHandler)
 }
 
 // decodeIndexRequest is a transport/http.DecodeRequestFunc that decodes a
@@ -59,7 +61,10 @@ type errorWrapper struct {
 
 // makeIndexSecureHandler creates the handler logic
 func makeIndexSecureHandler(m *http.ServeMux, endpoints endpoint.Endpoints, options []http1.ServerOption) {
-	m.Handle("/products/secure", http1.NewServer(endpoints.IndexSecureEndpoint, decodeIndexSecureRequest, encodeIndexSecureResponse, options...))
+	indexSecureHandler := http1.NewServer(endpoints.IndexSecureEndpoint, decodeIndexSecureRequest, encodeIndexSecureResponse, options...)
+
+	m.Handle("/products/secure", indexSecureHandler)
+	m.Handle("/products/secure/", indexSecureHandler)
 }
 
 // decodeIndexSecureRequest is a transport/http.DecodeRequestFunc that decodes a
