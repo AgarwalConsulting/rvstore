@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"log"
 	"net/http"
 	"os"
 
@@ -10,6 +9,8 @@ import (
 	"agarwalconsulting.io/rvstore/orders/pkg/repository"
 	"agarwalconsulting.io/rvstore/orders/pkg/service"
 	"agarwalconsulting.io/rvstore/orders/pkg/transport"
+	"github.com/gorilla/handlers"
+	log "github.com/sirupsen/logrus"
 )
 
 var (
@@ -26,7 +27,7 @@ func init() {
 
 	httpAddr, ok = os.LookupEnv("ORDER_SERVICE_ADDR")
 	if !ok {
-		httpAddr = ":8080"
+		httpAddr = ":9002"
 	}
 }
 
@@ -45,5 +46,8 @@ func main() {
 
 	r := transport.NewHTTPServer(ctx, orderEndpoints)
 
-	log.Fatal(http.ListenAndServe(httpAddr, r))
+	loggedRouter := handlers.LoggingHandler(os.Stdout, handlers.CORS()(r))
+
+	log.Infof("Starting orders service on: %s...\n", httpAddr)
+	log.Fatal(http.ListenAndServe(httpAddr, loggedRouter))
 }
