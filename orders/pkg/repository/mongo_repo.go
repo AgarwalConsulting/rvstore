@@ -5,6 +5,8 @@ import (
 	"errors"
 	"time"
 
+	"github.com/gofrs/uuid"
+
 	"agarwalconsulting.io/rvstore/entities"
 	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
@@ -18,6 +20,8 @@ import (
 const OrdersCollection = "orders"
 
 const databaseName = "rvstore"
+
+var u1 = uuid.Must(uuid.NewV4())
 
 type mongoRepository struct {
 	*mongo.Collection
@@ -66,6 +70,16 @@ func (mr *mongoRepository) FindBy(ID string) (entities.Order, error) {
 func (mr *mongoRepository) Save(order *entities.Order) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
+
+	u1, err := uuid.NewV4()
+
+	if err != nil {
+		return err
+	}
+
+	if order.ID == "" {
+		order.ID = u1.String()
+	}
 
 	res, err := mr.InsertOne(ctx, order)
 

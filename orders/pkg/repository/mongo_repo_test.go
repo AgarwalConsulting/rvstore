@@ -17,7 +17,7 @@ var mongoURL string
 func TestMain(m *testing.M) {
 	ctx, cancelFn := context.WithCancel(context.Background())
 
-	url, ok := os.LookupEnv("MONGO_URL")
+	url, ok := os.LookupEnv("MONGO_DB_URL")
 
 	if !ok {
 		url = "mongodb://root:example@localhost/admin"
