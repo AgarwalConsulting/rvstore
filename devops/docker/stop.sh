@@ -20,3 +20,9 @@ docker rm rvstore-ui
 
 docker kill rvstore-order-simulator
 docker rm rvstore-order-simulator
+
+docker network delete rvstore
+docker network prune
+
+docker volume delete mongodata
+docker volume prune
