@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 ## Orders Service
-docker build -t agarwalconsulting/rvstore-order-api:v1 --build-arg orders .
+docker build -t agarwalconsulting/rvstore-order-api:v1 --build-arg SERVICE=orders .
 docker push agarwalconsulting/rvstore-order-api:v1
 
 ## Products Service
-docker build -t agarwalconsulting/rvstore-product-api:v1 --build-arg products .
+docker build -t agarwalconsulting/rvstore-product-api:v1 --build-arg SERVICE=products .
 docker push agarwalconsulting/rvstore-product-api:v1
 
 ## Auth Service
-docker build -t agarwalconsulting/rvstore-auth-api:v1 --build-arg auth .
+docker build -t agarwalconsulting/rvstore-auth-api:v1 --build-arg SERVICE=auth .
 docker push agarwalconsulting/rvstore-auth-api:v1
 
 ## Gateway Service
