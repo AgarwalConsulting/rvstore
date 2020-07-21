@@ -9,6 +9,19 @@ services:
     container_name: orders
     ports:
     - 9002:9002
+    environment:
+      - MONGO_DB_URL=mongodb://root:example@mongodb/admin
+
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+    - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - dbdata:/data/db
 
   products:
     build:
@@ -29,3 +42,6 @@ services:
     container_name: auth
     ports:
     - 9003:9003
+
+volumes:
+  dbdata:
