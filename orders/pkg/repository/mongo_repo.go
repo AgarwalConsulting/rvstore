@@ -27,17 +27,17 @@ func (mr *mongoRepository) FetchAll() ([]entities.Order, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
-	curr, err := mr.Find(ctx, bson.D{})
+	cur, err := mr.Find(ctx, bson.D{})
 	if err != nil {
 		return nil, err
 	}
-	defer curr.Close(ctx)
+	defer cur.Close(ctx)
 
 	var orders []entities.Order
 
-	for curr.Next(ctx) {
+	for cur.Next(ctx) {
 		var nextOrder entities.Order
-		err := curr.Decode(&nextOrder)
+		err := cur.Decode(&nextOrder)
 		if err != nil {
 			return nil, err
 		}
