@@ -13,7 +13,7 @@ A go-kit sample application. It is also used as an example app in a Kubernetes c
 This is the stock Mongo database. Find it on Docker Hub and follow the instructions to run it.
 
 * Container port: 27017
-* Container name: rvstore-orders-mongodb
+* Container name: mongo
 
 #### API Gateway Service
 
