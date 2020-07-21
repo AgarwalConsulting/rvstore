@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  orders:
+    build:
+      context: .
+      args:
+        SERVICE: orders
+    restart: always
+    container_name: orders
+    ports:
+    - 9002:9002
+
+  products:
+    build:
+      context: .
+      args:
+        SERVICE: products
+    restart: always
+    container_name: products
+    ports:
+    - 9001:9001
+
+  auth:
+    build:
+      context: .
+      args:
+        SERVICE: auth
+    restart: always
+    container_name: auth
+    ports:
+    - 9003:9003
