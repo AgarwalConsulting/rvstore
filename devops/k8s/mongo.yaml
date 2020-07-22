@@ -68,7 +68,7 @@ metadata:
   name: mongodb
 spec:
   ports:
-  - name: "dbPort"
+  - name: dbport
     port: 27017
     targetPort: 27017
   selector:
