@@ -17,7 +17,7 @@ docker run --rm -d -p 9002:9002 \
   --network rvstore \
   --network-alias rvstore-order-api \
   -e MONGO_DB_URL="mongodb://root:example@mongodb/admin" \
-  agarwalconsulting/rvstore-order-api:v1
+  agarwalconsulting/rvstore-order-api:v2
 
 docker run --rm -d -p 9001:9001 \
   --name rvstore-product-api \
