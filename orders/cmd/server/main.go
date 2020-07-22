@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 	"os"
+	"strings"
 
 	"agarwalconsulting.io/rvstore/orders/pkg/endpoints"
 	"agarwalconsulting.io/rvstore/orders/pkg/repository"
@@ -24,6 +25,8 @@ func init() {
 	if !ok {
 		mongoURL = "mongodb://root:example@localhost/admin"
 	}
+
+	mongoURL = strings.Trim(mongoURL, "\n")
 
 	httpAddr, ok = os.LookupEnv("ORDER_SERVICE_ADDR")
 	if !ok {

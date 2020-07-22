@@ -6,6 +6,7 @@ type: Opaque
 data:
   username: cm9vdAo=
   password: ZXhhbXBsZQo=
+  connection: bW9uZ29kYjovL3Jvb3Q6ZXhhbXBsZUBtb25nb2RiLXNlcnZpY2UvYWRtaW4K
 
 ---
 
@@ -16,8 +17,6 @@ metadata:
   labels:
     app: mongo
 spec:
-  strategy:
-    type: RollingUpdate
   replicas: 1
   revisionHistoryLimit: 2
   selector:

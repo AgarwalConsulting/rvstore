@@ -4,6 +4,9 @@
 docker build -t agarwalconsulting/rvstore-order-api:v1 --build-arg SERVICE=orders .
 docker push agarwalconsulting/rvstore-order-api:v1
 
+docker build -t agarwalconsulting/rvstore-order-api:v2 --build-arg SERVICE=orders .
+docker push agarwalconsulting/rvstore-order-api:v2
+
 ## Products Service
 docker build -t agarwalconsulting/rvstore-product-api:v1 --build-arg SERVICE=products .
 docker push agarwalconsulting/rvstore-product-api:v1
