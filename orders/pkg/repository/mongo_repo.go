@@ -81,6 +81,11 @@ func (mr *mongoRepository) Save(order *entities.Order) error {
 		order.ID = u1.String()
 	}
 
+	if order.CreatedAt == nil {
+		now := time.Now()
+		order.CreatedAt = &now
+	}
+
 	res, err := mr.InsertOne(ctx, order)
 
 	if err != nil {

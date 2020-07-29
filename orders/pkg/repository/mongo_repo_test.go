@@ -61,6 +61,7 @@ func TestSaveAndFindBy(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, orderID, retrievedOrder.ID)
 	assert.Equal(t, order.CustomerName, retrievedOrder.CustomerName)
+	assert.NotNil(t, retrievedOrder.CreatedAt)
 
 	allOrders, err := orderRepo.FetchAll()
 
