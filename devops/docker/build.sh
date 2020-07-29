@@ -16,8 +16,8 @@ docker build -t agarwalconsulting/rvstore-auth-api:v1 --build-arg SERVICE=auth .
 docker push agarwalconsulting/rvstore-auth-api:v1
 
 ## Gateway Service
-docker build -t agarwalconsulting/rvstore-api-gateway:v1 web/gateway-service
-docker push agarwalconsulting/rvstore-api-gateway:v1
+docker build -t agarwalconsulting/rvstore-api-gateway:v2 web/gateway-service
+docker push agarwalconsulting/rvstore-api-gateway:v2
 
 ## Building UI
 docker build -t agarwalconsulting/rvstore-ui:v1 web/rvstore

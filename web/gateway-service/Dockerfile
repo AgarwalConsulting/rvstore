@@ -1,9 +1,2 @@
-FROM alpine:latest
-USER root
-
-RUN apk update
-RUN apk fetch openjdk8
-RUN apk add openjdk8
-
-ADD target/gateway-service.jar /
-ENTRYPOINT java -jar /gateway-service.jar
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/nginx.conf

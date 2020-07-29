@@ -1,7 +1,6 @@
 version: "3.7"
 
 services:
-
   mongodb:
     image: mongo
     restart: always
@@ -46,12 +45,11 @@ services:
     - 9003:9003
 
   rvstore-api-gateway:
-    image: "agarwalconsulting/rvstore-api-gateway:v1"
+    build:
+      context: ./web/gateway-service
     restart: always
     ports:
      - "9000:9000"
-    environment:
-     - SPRING_PROFILES_ACTIVE=compose
 
   ui:
     image: "agarwalconsulting/rvstore-ui:v1"
