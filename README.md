@@ -1,6 +1,6 @@
 # RV Store
 
-A go-kit sample application. It is also used as an example app in a Kubernetes class.
+The RV store is a mock e-commerce application. It serves as a `go-kit` sample project. And is also used as a capstone project for a Kubernetes class.
 
 ## Setup
 
