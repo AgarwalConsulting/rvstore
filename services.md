@@ -30,7 +30,7 @@ This is a Go application. It receives order data and stores it in the Mongo data
 
 ### `auth` API
 
-This is a Go application. It serves up the product information as a REST API.
+This is a Go application. It provides authentication, via JWT tokens.
 
 - Docker image: `agarwalconsulting/rvstore-auth-api`
 - Container port: `9003`
